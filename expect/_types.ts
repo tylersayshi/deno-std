@@ -38,7 +38,7 @@ export type Async<T> = {
 /**
  * The Expected interface defines the available assertion methods.
  */
-export interface Expected<IsAsync = false> {
+export interface Expected<DataType, IsAsync = false> {
   /**
    * Asserts that the function was called with the specified arguments.
    *
@@ -56,7 +56,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected arguments.
    */
-  lastCalledWith(...expected: unknown[]): void;
+  lastCalledWith(...expected: DataType[]): void;
 
   /**
    * Asserts that the function returned the specified value.
@@ -74,7 +74,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected return value.
    */
-  lastReturnedWith(expected: unknown): void;
+  lastReturnedWith(expected: DataType): void;
 
   /**
    * Asserts that the function was called with the specified arguments at the specified call index.
@@ -95,7 +95,7 @@ export interface Expected<IsAsync = false> {
    * @param nth The call index.
    * @param expected The expected arguments.
    */
-  nthCalledWith(nth: number, ...expected: unknown[]): void;
+  nthCalledWith(nth: number, ...expected: DataType[]): void;
 
   /**
    * Asserts that the function returned the specified value at the specified call index.
@@ -117,7 +117,7 @@ export interface Expected<IsAsync = false> {
    * @param nth The call index.
    * @param expected The expected return value.
    */
-  nthReturnedWith(nth: number, expected: unknown): void;
+  nthReturnedWith(nth: number, expected: DataType): void;
 
   /**
    * Asserts that the function was called at least once.
@@ -174,7 +174,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected arguments.
    */
-  toBeCalledWith(...expected: unknown[]): void;
+  toBeCalledWith(...expected: DataType[]): void;
 
   /**
    * Asserts that a given numerical value is approximately equal to an
@@ -390,7 +390,7 @@ export interface Expected<IsAsync = false> {
    * expect(obj).not.toBe({});
    * ```
    */
-  toBe(expected: unknown): void;
+  toBe(expected: DataType): void;
 
   /**
    * Asserts that the value contains the specified value (deep equality).
@@ -408,7 +408,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected value.
    */
-  toContainEqual(expected: unknown): void;
+  toContainEqual(expected: DataType): void;
 
   /**
    * Asserts that the value contains the specified value (shallow equality).
@@ -429,7 +429,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected value.
    */
-  toContain(expected: unknown): void;
+  toContain(expected: DataType): void;
 
   /**
    * Asserts that the value is equal to the specified value (deep equality).
@@ -445,7 +445,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected value.
    */
-  toEqual(expected: unknown): void;
+  toEqual(expected: DataType): void;
 
   /**
    * Asserts that the function was called the specified number of times.
@@ -483,7 +483,7 @@ export interface Expected<IsAsync = false> {
    * ```
    * @param expected The expected arguments.
    */
-  toHaveBeenCalledWith(...expected: unknown[]): void;
+  toHaveBeenCalledWith(...expected: DataType[]): void;
 
   /**
    * Asserts that the function was called at least once.
@@ -520,7 +520,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected arguments.
    */
-  toHaveBeenLastCalledWith(...expected: unknown[]): void;
+  toHaveBeenLastCalledWith(...expected: DataType[]): void;
 
   /**
    * Asserts that the function was called with the specified arguments at the specified call index.
@@ -542,7 +542,7 @@ export interface Expected<IsAsync = false> {
    * @param nth The call index.
    * @param expected The expected arguments.
    */
-  toHaveBeenNthCalledWith(nth: number, ...expected: unknown[]): void;
+  toHaveBeenNthCalledWith(nth: number, ...expected: DataType[]): void;
 
   /**
    * Asserts that the value has the specified length.
@@ -577,7 +577,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected return value.
    */
-  toHaveLastReturnedWith(expected: unknown): void;
+  toHaveLastReturnedWith(expected: DataType): void;
 
   /**
    * Asserts that the function returned the specified value at the specified call index.
@@ -599,7 +599,7 @@ export interface Expected<IsAsync = false> {
    * @param nth The call index.
    * @param expected The expected return value.
    */
-  toHaveNthReturnedWith(nth: number, expected: unknown): void;
+  toHaveNthReturnedWith(nth: number, expected: DataType): void;
 
   /**
    * Asserts that the value has the specified property with an optional value.
@@ -616,7 +616,7 @@ export interface Expected<IsAsync = false> {
    * @param propName The property name or an array of property names.
    * @param value The expected value (optional).
    */
-  toHaveProperty(propName: string | string[], value?: unknown): void;
+  toHaveProperty(propName: string | string[], value?: DataType): void;
 
   /**
    * Asserts that the function returned the specified number of times.
@@ -655,7 +655,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected return value.
    */
-  toHaveReturnedWith(expected: unknown): void;
+  toHaveReturnedWith(expected: DataType): void;
 
   /**
    * Asserts that the function returned.
@@ -704,7 +704,7 @@ export interface Expected<IsAsync = false> {
    * @param expected The expected object or array of objects.
    */
   toMatchObject(
-    expected: Record<PropertyKey, unknown> | Record<PropertyKey, unknown>[],
+    expected: Record<PropertyKey, DataType> | Record<PropertyKey, DataType>[],
   ): void;
 
   /**
@@ -760,7 +760,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param expected The expected return value.
    */
-  toReturnWith(expected: unknown): void;
+  toReturnWith(expected: DataType): void;
 
   /**
    * Asserts that the value is strictly equal to the specified value.
@@ -787,7 +787,7 @@ export interface Expected<IsAsync = false> {
    *
    * @param candidate The candidate value.
    */
-  toStrictEqual(candidate: unknown): void;
+  toStrictEqual(candidate: DataType): void;
 
   /**
    * Asserts that the function throws an error.

@@ -145,8 +145,11 @@ const matchers: Record<MatcherKey, Matcher> = {
  *
  * @typeParam T The interface used for `expect`. This is usually needed only if you want to use `expect.extend` to create custom matchers.
  */
-export function expect<T extends Expected = Expected>(
-  value: unknown,
+export function expect<
+  DataType,
+  T extends Expected<DataType> = Expected<DataType>,
+>(
+  value: DataType,
   customMessage?: string,
 ): T {
   let isNot = false;
